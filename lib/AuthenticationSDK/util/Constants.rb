@@ -176,5 +176,9 @@
 
       DEFAULT_KEY_FILE_PATH = File.join(Dir.pwd, "resources")
 
+      MLE_CACHE_KEY_IDENTIFIER_FOR_RESPONSE_PRIVATE_KEY = "mleResponsePrivateKeyFromFile"
+
       PUBLIC_KEY_CACHE_IDENTIFIER = "FlexV2PublicKeys"
+      
+      RESPONSE_MLE_P12_PFX_CACHE_IDENTIFIER = "_responseMleP12Pfx"
   end

@@ -75,7 +75,7 @@ module CyberSource
         :'merchant_information' => :'Upv1capturecontextsDataMerchantInformation',
         :'processing_information' => :'Upv1capturecontextsDataProcessingInformation',
         :'recipient_information' => :'Upv1capturecontextsDataRecipientInformation',
-        :'merchant_defined_information' => :'Upv1capturecontextsDataMerchantDefinedInformation',
+        :'merchant_defined_information' => :'Array<Upv1capturecontextsDataMerchantDefinedInformation>',
         :'device_information' => :'Upv1capturecontextsDataDeviceInformation',
         :'payment_information' => :'Upv1capturecontextsDataPaymentInformation'
       }
@@ -118,7 +118,9 @@ module CyberSource
       end
 
       if attributes.has_key?(:'merchantDefinedInformation')
-        self.merchant_defined_information = attributes[:'merchantDefinedInformation']
+        if (value = attributes[:'merchantDefinedInformation']).is_a?(Array)
+          self.merchant_defined_information = value
+        end
       end
 
       if attributes.has_key?(:'deviceInformation')

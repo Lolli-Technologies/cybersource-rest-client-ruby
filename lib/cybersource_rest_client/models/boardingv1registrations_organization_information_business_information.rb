@@ -15,6 +15,10 @@ module CyberSource
   class Boardingv1registrationsOrganizationInformationBusinessInformation
     attr_accessor :name
 
+    attr_accessor :locale
+
+    attr_accessor :localized_names
+
     attr_accessor :doing_business_as
 
     attr_accessor :description
@@ -49,6 +53,8 @@ module CyberSource
     def self.attribute_map
       {
         :'name' => :'name',
+        :'locale' => :'locale',
+        :'localized_names' => :'localizedNames',
         :'doing_business_as' => :'doingBusinessAs',
         :'description' => :'description',
         :'start_date' => :'startDate',
@@ -69,6 +75,8 @@ module CyberSource
     def self.json_map
       {
         :'name' => :'name',
+        :'locale' => :'locale',
+        :'localized_names' => :'localized_names',
         :'doing_business_as' => :'doing_business_as',
         :'description' => :'description',
         :'start_date' => :'start_date',
@@ -89,6 +97,8 @@ module CyberSource
     def self.swagger_types
       {
         :'name' => :'String',
+        :'locale' => :'String',
+        :'localized_names' => :'Boardingv1registrationsOrganizationInformationBusinessInformationLocalizedNames',
         :'doing_business_as' => :'String',
         :'description' => :'String',
         :'start_date' => :'Date',
@@ -115,6 +125,14 @@ module CyberSource
 
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
+      end
+
+      if attributes.has_key?(:'locale')
+        self.locale = attributes[:'locale']
+      end
+
+      if attributes.has_key?(:'localizedNames')
+        self.localized_names = attributes[:'localizedNames']
       end
 
       if attributes.has_key?(:'doingBusinessAs')
@@ -182,6 +200,10 @@ module CyberSource
         #invalid_properties.push('invalid value for "name", must conform to the pattern /^[0-9a-zA-Z _\\-\\+\\.\\*\\\"\/'&\\,\\(\\)!$;:?@\\#¡-￿]+$/.')
       #end
 
+      #if !@locale.nil? && @locale !~ Regexp.new(/^(de-de|en-gb|en-us|es-es|es-us|fr-ca|fr-fr|it-it|ja-jp|pt-br|zh-cn|zh-tw)$/)
+        #invalid_properties.push('invalid value for "locale", must conform to the pattern /^(de-de|en-gb|en-us|es-es|es-us|fr-ca|fr-fr|it-it|ja-jp|pt-br|zh-cn|zh-tw)$/.')
+      #end
+
       #if !@doing_business_as.nil? && @doing_business_as !~ Regexp.new(/^[0-9a-zA-Z _\\-\\+\\.\\*\\\"\/'&\\,\\(\\)!$;:?@\\#¡-￿]+$/)
         #invalid_properties.push('invalid value for "doing_business_as", must conform to the pattern /^[0-9a-zA-Z _\\-\\+\\.\\*\\\"\/'&\\,\\(\\)!$;:?@\\#¡-￿]+$/.')
       #end
@@ -214,6 +236,7 @@ module CyberSource
     def valid?
       return false if @name.nil?
       #return false if @name !~ Regexp.new(/^[0-9a-zA-Z _\\-\\+\\.\\*\\\"\/'&\\,\\(\\)!$;:?@\\#¡-￿]+$/)
+      #return false if !@locale.nil? && @locale !~ Regexp.new(/^(de-de|en-gb|en-us|es-es|es-us|fr-ca|fr-fr|it-it|ja-jp|pt-br|zh-cn|zh-tw)$/)
       #return false if !@doing_business_as.nil? && @doing_business_as !~ Regexp.new(/^[0-9a-zA-Z _\\-\\+\\.\\*\\\"\/'&\\,\\(\\)!$;:?@\\#¡-￿]+$/)
       #return false if !@description.nil? && @description !~ Regexp.new(/[À-ÖØ-öø-ǿÀ-ÖØ-öø-ǿ\\n\\ra-zA-Z0-9().\\-_#,;\/\\\\@$:&amp;!?%«»€₣«»€₣ ]{1,}$/)
       #return false if !@website_url.nil? && @website_url !~ Regexp.new(/\\b((?:https?:\/\/|www\\d{0,3}[.]|[a-z0-9.\\-]+[.][a-z]{2,4}\/)(?:[^\\s()<>]+|\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\))+(?:\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\)|[^\\s`!()\\[\\]{};:'\".,<>?Â«Â»â€œâ€â€˜â€™]))/)
@@ -235,6 +258,16 @@ module CyberSource
       #end
 
       @name = name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] locale Value to be assigned
+    def locale=(locale)
+      #if !locale.nil? && locale !~ Regexp.new(/^(de-de|en-gb|en-us|es-es|es-us|fr-ca|fr-fr|it-it|ja-jp|pt-br|zh-cn|zh-tw)$/)
+        #fail ArgumentError, 'invalid value for "locale", must conform to the pattern /^(de-de|en-gb|en-us|es-es|es-us|fr-ca|fr-fr|it-it|ja-jp|pt-br|zh-cn|zh-tw)$/.'
+      #end
+
+      @locale = locale
     end
 
     # Custom attribute writer method with validation
@@ -303,6 +336,8 @@ module CyberSource
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
+          locale == o.locale &&
+          localized_names == o.localized_names &&
           doing_business_as == o.doing_business_as &&
           description == o.description &&
           start_date == o.start_date &&
@@ -327,7 +362,7 @@ module CyberSource
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, doing_business_as, description, start_date, address, time_zone, website_url, type, tax_id, phone_number, business_contact, technical_contact, emergency_contact, merchant_category_code].hash
+      [name, locale, localized_names, doing_business_as, description, start_date, address, time_zone, website_url, type, tax_id, phone_number, business_contact, technical_contact, emergency_contact, merchant_category_code].hash
     end
 
     # Builds the object from hash

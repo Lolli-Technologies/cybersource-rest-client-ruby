@@ -12,11 +12,12 @@ Swagger Codegen version: 2.4.38
 require 'date'
 
 module CyberSource
+  # Contains merchant-defined key-value pairs
   class Upv1capturecontextsDataMerchantDefinedInformation
-    # The key or identifier for the merchant-defined data field
+    # The key or identifier for the merchant-defined data field.  Valid values are 1 to 100.
     attr_accessor :key
 
-    # The value associated with the merchant-defined data field
+    # The value you assign for your merchant-defined data field.
     attr_accessor :value
 
     # Attribute mapping from ruby-style variable name to JSON key.
