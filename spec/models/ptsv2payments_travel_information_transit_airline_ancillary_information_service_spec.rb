@@ -43,4 +43,16 @@ describe 'Ptsv2paymentsTravelInformationTransitAirlineAncillaryInformationServic
     end
   end
 
+  describe 'test attribute "fee_amount"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "fee_code"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end
