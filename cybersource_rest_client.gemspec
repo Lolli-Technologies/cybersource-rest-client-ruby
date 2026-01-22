@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
   s.files       = Dir.glob("{lib}/{cybersource_rest_client}/**/*") + Dir.glob("{lib}/{AuthenticationSDK}/authentication/**/*") + Dir.glob("{lib}/{AuthenticationSDK}/core/**/*") + Dir.glob("{lib}/{AuthenticationSDK}/util/**/*") + Dir.glob("{lib}/{AuthenticationSDK}/logging/**/*") + Dir.glob("{lib}/cybersource_rest_client.rb")
   s.required_ruby_version = ">= 1.9"
 
+  s.add_runtime_dependency 'typhoeus', '~> 1.4', '>= 1.4.0'
   s.add_runtime_dependency 'json', '~> 2.7'
   s.add_runtime_dependency 'activesupport', '>= 6.0.3.2'
   s.add_runtime_dependency 'interface','~> 1.0', '>= 1.0.5'
