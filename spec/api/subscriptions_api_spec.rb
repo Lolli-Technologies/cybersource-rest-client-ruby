@@ -76,6 +76,7 @@ describe 'SubscriptionsApi' do
   # @option opts [Integer] :limit Number of items to be returned. Default - &#x60;20&#x60;, Max - &#x60;100&#x60; 
   # @option opts [String] :code Filter by Subscription Code
   # @option opts [String] :status Filter by Subscription Status
+  # @option opts [String] :customer_id Filter by Customer Id
   # @return [GetAllSubscriptionsResponse]
   describe 'get_all_subscriptions test' do
     it 'should work' do

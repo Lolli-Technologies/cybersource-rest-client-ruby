@@ -31,6 +31,12 @@ describe 'Ptsv2creditsProcessingInformation' do
       expect(@instance).to be_instance_of(CyberSource::Ptsv2creditsProcessingInformation)
     end
   end
+  describe 'test attribute "action_list"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "commerce_indicator"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

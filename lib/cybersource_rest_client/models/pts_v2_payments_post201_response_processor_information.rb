@@ -40,6 +40,9 @@ module CyberSource
     # Processor-defined response category code. The associated detail error code is in the `processorInformation.responseCode` or `issuerInformation.responseCode` field of the service you requested.  This field is supported only for:   - Japanese issuers  - Domestic transactions in Japan  - Comercio Latino—processor transaction ID required for troubleshooting  #### Maximum length for processors   - Comercio Latino: 36  - All other processors: 3 
     attr_accessor :response_category_code
 
+    # This field is used by Visa only and contains the response source/reason code that identifies the source of the response decision. Use this field only for clearing with your acquirer. 
+    attr_accessor :response_source_code
+
     # Name of the Japanese acquirer that processed the transaction. Returned only for JCN Gateway. Please contact the CyberSource Japan Support Group for more information. 
     attr_accessor :forwarded_acquirer_code
 
@@ -151,6 +154,7 @@ module CyberSource
         :'response_code_source' => :'responseCodeSource',
         :'response_details' => :'responseDetails',
         :'response_category_code' => :'responseCategoryCode',
+        :'response_source_code' => :'responseSourceCode',
         :'forwarded_acquirer_code' => :'forwardedAcquirerCode',
         :'settlement_date' => :'settlementDate',
         :'sequence_number' => :'sequenceNumber',
@@ -203,6 +207,7 @@ module CyberSource
         :'response_code_source' => :'response_code_source',
         :'response_details' => :'response_details',
         :'response_category_code' => :'response_category_code',
+        :'response_source_code' => :'response_source_code',
         :'forwarded_acquirer_code' => :'forwarded_acquirer_code',
         :'settlement_date' => :'settlement_date',
         :'sequence_number' => :'sequence_number',
@@ -255,6 +260,7 @@ module CyberSource
         :'response_code_source' => :'String',
         :'response_details' => :'String',
         :'response_category_code' => :'String',
+        :'response_source_code' => :'String',
         :'forwarded_acquirer_code' => :'String',
         :'settlement_date' => :'String',
         :'sequence_number' => :'String',
@@ -337,6 +343,10 @@ module CyberSource
 
       if attributes.has_key?(:'responseCategoryCode')
         self.response_category_code = attributes[:'responseCategoryCode']
+      end
+
+      if attributes.has_key?(:'responseSourceCode')
+        self.response_source_code = attributes[:'responseSourceCode']
       end
 
       if attributes.has_key?(:'forwardedAcquirerCode')
@@ -550,6 +560,12 @@ module CyberSource
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] response_source_code Value to be assigned
+    def response_source_code=(response_source_code)
+      @response_source_code = response_source_code
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] forwarded_acquirer_code Value to be assigned
     def forwarded_acquirer_code=(forwarded_acquirer_code)
       @forwarded_acquirer_code = forwarded_acquirer_code
@@ -683,6 +699,7 @@ module CyberSource
           response_code_source == o.response_code_source &&
           response_details == o.response_details &&
           response_category_code == o.response_category_code &&
+          response_source_code == o.response_source_code &&
           forwarded_acquirer_code == o.forwarded_acquirer_code &&
           settlement_date == o.settlement_date &&
           sequence_number == o.sequence_number &&
@@ -731,7 +748,7 @@ module CyberSource
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [auth_indicator, approval_code, card_reference_data, transaction_id, network_transaction_id, response_code, response_code_source, response_details, response_category_code, forwarded_acquirer_code, settlement_date, sequence_number, avs, card_verification, merchant_advice, electronic_verification_results, ach_verification, customer, consumer_authentication_response, system_trace_audit_number, payment_account_reference_number, transaction_integrity_code, amex_verbal_auth_reference_number, master_card_service_code, master_card_service_reply_code, master_card_authentication_type, name, routing, merchant_number, retrieval_reference_number, payment_url, complete_url, signature, public_key, seller_protection, transaction_expiry_date, custom_url, scheme_assigned_id, device_url, disbursement_mode, update_time_utc, expiration_time_utc, order_id, order_status, merchant_risk_prediction, network].hash
+      [auth_indicator, approval_code, card_reference_data, transaction_id, network_transaction_id, response_code, response_code_source, response_details, response_category_code, response_source_code, forwarded_acquirer_code, settlement_date, sequence_number, avs, card_verification, merchant_advice, electronic_verification_results, ach_verification, customer, consumer_authentication_response, system_trace_audit_number, payment_account_reference_number, transaction_integrity_code, amex_verbal_auth_reference_number, master_card_service_code, master_card_service_reply_code, master_card_authentication_type, name, routing, merchant_number, retrieval_reference_number, payment_url, complete_url, signature, public_key, seller_protection, transaction_expiry_date, custom_url, scheme_assigned_id, device_url, disbursement_mode, update_time_utc, expiration_time_utc, order_id, order_status, merchant_risk_prediction, network].hash
     end
 
     # Builds the object from hash

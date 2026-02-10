@@ -23,6 +23,7 @@ module CyberSource
     # Allows you to retrieve the invoice settings for the payment page.
     #
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :product_type Allows you to choose which product type settings you want to update.
     # @return [InvoicingV2InvoiceSettingsGet200Response]
     #
     def get_invoice_settings(opts = {})
@@ -33,6 +34,7 @@ module CyberSource
     # Get Invoice Settings
     # Allows you to retrieve the invoice settings for the payment page.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :product_type Allows you to choose which product type settings you want to update.
     # @return [Array<(InvoicingV2InvoiceSettingsGet200Response, Fixnum, Hash)>] InvoicingV2InvoiceSettingsGet200Response data, response status code and response headers
     def get_invoice_settings_with_http_info(opts = {})
 
@@ -44,11 +46,15 @@ module CyberSource
                 puts 'Cannot write to log'
             end
       end
+      if @api_client.config.client_side_validation && opts[:'product_type'] && !['INVOICING', 'PAYBYLINK'].include?(opts[:'product_type'])
+        fail ArgumentError, 'invalid value for "product_type", must be one of INVOICING, PAYBYLINK'
+      end
       # resource path
       local_var_path = 'invoicing/v2/invoiceSettings'
 
       # query parameters
       query_params = {}
+      query_params[:'productType'] = opts[:'product_type'] if !opts[:'product_type'].nil?
 
       # header parameters
       header_params = {}
@@ -101,6 +107,7 @@ module CyberSource
     #
     # @param invoice_settings_request 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :product_type Allows you to choose which product type settings you want to update.
     # @return [InvoicingV2InvoiceSettingsGet200Response]
     #
     def update_invoice_settings(invoice_settings_request, opts = {})
@@ -112,6 +119,7 @@ module CyberSource
     # Allows you to customize the payment page, the checkout experience, email communication and payer authentication. You can customize the invoice to match your brand with your business name, logo and brand colors, and a VAT Tax number. You can choose to capture the payers shipping details, phone number and email during the checkout process. You can add a custom message to all invoice emails and enable or disable payer authentication for invoice payments.
     # @param invoice_settings_request 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :product_type Allows you to choose which product type settings you want to update.
     # @return [Array<(InvoicingV2InvoiceSettingsGet200Response, Fixnum, Hash)>] InvoicingV2InvoiceSettingsGet200Response data, response status code and response headers
     def update_invoice_settings_with_http_info(invoice_settings_request, opts = {})
 
@@ -127,11 +135,15 @@ module CyberSource
       if @api_client.config.client_side_validation && invoice_settings_request.nil?
         fail ArgumentError, "Missing the required parameter 'invoice_settings_request' when calling InvoiceSettingsApi.update_invoice_settings"
       end
+      if @api_client.config.client_side_validation && opts[:'product_type'] && !['INVOICING', 'PAYBYLINK'].include?(opts[:'product_type'])
+        fail ArgumentError, 'invalid value for "product_type", must be one of INVOICING, PAYBYLINK'
+      end
       # resource path
       local_var_path = 'invoicing/v2/invoiceSettings'
 
       # query parameters
       query_params = {}
+      query_params[:'productType'] = opts[:'product_type'] if !opts[:'product_type'].nil?
 
       # header parameters
       header_params = {}

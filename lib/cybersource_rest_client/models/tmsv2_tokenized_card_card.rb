@@ -12,9 +12,8 @@ Swagger Codegen version: 2.4.38
 require 'date'
 
 module CyberSource
-  # Card object used to create a network token 
   class Tmsv2TokenizedCardCard
-    # The customer's payment card number, also known as the Primary Account Number (PAN). 
+    # The latest customer's payment card number associated to the network token. 
     attr_accessor :number
 
     # Two-digit month in which the payment card expires.  Format: `MM`.  Possible Values: `01` through `12`. 

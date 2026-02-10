@@ -31,19 +31,19 @@ describe 'InlineResponse2011' do
       expect(@instance).to be_instance_of(CyberSource::InlineResponse2011)
     end
   end
-  describe 'test attribute "id"' do
+  describe 'test attribute "_links"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "submit_time_utc"' do
+  describe 'test attribute "card"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "status"' do
+  describe 'test attribute "tokenized_card"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

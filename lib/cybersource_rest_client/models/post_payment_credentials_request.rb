@@ -62,10 +62,10 @@ module CyberSource
         :'payment_credential_type' => :'String',
         :'transaction_type' => :'String',
         :'client_correlation_id' => :'String',
-        :'order_information' => :'Tmsv2tokenstokenIdpaymentcredentialsOrderInformation',
-        :'merchant_information' => :'Tmsv2tokenstokenIdpaymentcredentialsMerchantInformation',
-        :'device_information' => :'Tmsv2tokenstokenIdpaymentcredentialsDeviceInformation',
-        :'authenticated_identities' => :'Array<Tmsv2tokenstokenIdpaymentcredentialsAuthenticatedIdentities>'
+        :'order_information' => :'Tmsv3tokenstokenIdpaymentcredentialsOrderInformation',
+        :'merchant_information' => :'Tmsv3tokenstokenIdpaymentcredentialsMerchantInformation',
+        :'device_information' => :'Tmsv3tokenstokenIdpaymentcredentialsDeviceInformation',
+        :'authenticated_identities' => :'Array<Tmsv3tokenstokenIdpaymentcredentialsAuthenticatedIdentities>'
       }
     end
 

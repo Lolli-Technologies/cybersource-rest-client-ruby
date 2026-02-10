@@ -43,6 +43,12 @@ describe 'PtsV2PaymentsPost201ResponseMerchantInformation' do
     end
   end
 
+  describe 'test attribute "category_code"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "return_url"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

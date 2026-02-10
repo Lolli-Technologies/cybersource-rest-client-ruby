@@ -18,6 +18,9 @@ module CyberSource
 
     attr_accessor :merchant_descriptor
 
+    # The value for this field is a four-digit number that the payment card industry uses to classify merchants into market segments. A payment card company assigned one or more of these values to your business when you started accepting the payment card company's cards. When you do not include this field in your request, Cybersource uses the value in your Cybersource account. Use this field only for clearing with your acquirer. 
+    attr_accessor :category_code
+
     # URL for displaying payment results to the consumer (notifications) after the transaction is processed. Usually this URL belongs to merchant and its behavior is defined by merchant 
     attr_accessor :return_url
 
@@ -26,6 +29,7 @@ module CyberSource
       {
         :'merchant_name' => :'merchantName',
         :'merchant_descriptor' => :'merchantDescriptor',
+        :'category_code' => :'categoryCode',
         :'return_url' => :'returnUrl'
       }
     end
@@ -35,6 +39,7 @@ module CyberSource
       {
         :'merchant_name' => :'merchant_name',
         :'merchant_descriptor' => :'merchant_descriptor',
+        :'category_code' => :'category_code',
         :'return_url' => :'return_url'
       }
     end
@@ -44,6 +49,7 @@ module CyberSource
       {
         :'merchant_name' => :'String',
         :'merchant_descriptor' => :'PtsV2PaymentsPost201ResponseMerchantInformationMerchantDescriptor',
+        :'category_code' => :'String',
         :'return_url' => :'String'
       }
     end
@@ -62,6 +68,10 @@ module CyberSource
 
       if attributes.has_key?(:'merchantDescriptor')
         self.merchant_descriptor = attributes[:'merchantDescriptor']
+      end
+
+      if attributes.has_key?(:'categoryCode')
+        self.category_code = attributes[:'categoryCode']
       end
 
       if attributes.has_key?(:'returnUrl')
@@ -89,6 +99,12 @@ module CyberSource
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] category_code Value to be assigned
+    def category_code=(category_code)
+      @category_code = category_code
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] return_url Value to be assigned
     def return_url=(return_url)
       @return_url = return_url
@@ -101,6 +117,7 @@ module CyberSource
       self.class == o.class &&
           merchant_name == o.merchant_name &&
           merchant_descriptor == o.merchant_descriptor &&
+          category_code == o.category_code &&
           return_url == o.return_url
     end
 
@@ -113,7 +130,7 @@ module CyberSource
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [merchant_name, merchant_descriptor, return_url].hash
+      [merchant_name, merchant_descriptor, category_code, return_url].hash
     end
 
     # Builds the object from hash

@@ -13,6 +13,9 @@ require 'date'
 
 module CyberSource
   class Ptsv2creditsProcessingInformation
+    # Array of actions (one or more) to be included in the payment to invoke bundled services along with Standalone Credit.  Possible values are one or more of follows:   - `DECISION_SKIP`: Use this when you want to skip Decision Manager service(s). 
+    attr_accessor :action_list
+
     # Type of transaction. Some payment card companies use this information when determining discount rates.  #### Used by **Authorization** Required payer authentication transactions; otherwise, optional. **Credit** Required for standalone credits on Chase Paymentech solutions; otherwise, optional.  The list of valid values in this field depends on your processor.  #### Ingenico ePayments When you omit this field for Ingenico ePayments, the processor uses the default transaction type they have on file for you instead of the default value   #### Card Present You must set this field to `retail`. This field is required for a card-present transaction. Note that this should ONLY be used when the cardholder and card are present at the time of the transaction. For all keyed transactions originated from a POS terminal where the cardholder and card are not present, commerceIndicator should be submitted as \"moto\" 
     attr_accessor :commerce_indicator
 
@@ -66,6 +69,7 @@ module CyberSource
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'action_list' => :'actionList',
         :'commerce_indicator' => :'commerceIndicator',
         :'processor_id' => :'processorId',
         :'payment_solution' => :'paymentSolution',
@@ -91,6 +95,7 @@ module CyberSource
     # Attribute mapping from JSON key to ruby-style variable name.
     def self.json_map
       {
+        :'action_list' => :'action_list',
         :'commerce_indicator' => :'commerce_indicator',
         :'processor_id' => :'processor_id',
         :'payment_solution' => :'payment_solution',
@@ -116,6 +121,7 @@ module CyberSource
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'action_list' => :'Array<String>',
         :'commerce_indicator' => :'String',
         :'processor_id' => :'String',
         :'payment_solution' => :'String',
@@ -145,6 +151,12 @@ module CyberSource
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'actionList')
+        if (value = attributes[:'actionList']).is_a?(Array)
+          self.action_list = value
+        end
+      end
 
       if attributes.has_key?(:'commerceIndicator')
         self.commerce_indicator = attributes[:'commerceIndicator']
@@ -313,6 +325,7 @@ module CyberSource
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          action_list == o.action_list &&
           commerce_indicator == o.commerce_indicator &&
           processor_id == o.processor_id &&
           payment_solution == o.payment_solution &&
@@ -343,7 +356,7 @@ module CyberSource
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [commerce_indicator, processor_id, payment_solution, reconciliation_id, link_id, report_group, visa_checkout_id, purchase_level, industry_data_type, wallet_type, national_net_domestic_data, network_routing_order, recurring_options, bank_transfer_options, purchase_options, electronic_benefits_transfer, loan_options, japan_payment_options, refund_options].hash
+      [action_list, commerce_indicator, processor_id, payment_solution, reconciliation_id, link_id, report_group, visa_checkout_id, purchase_level, industry_data_type, wallet_type, national_net_domestic_data, network_routing_order, recurring_options, bank_transfer_options, purchase_options, electronic_benefits_transfer, loan_options, japan_payment_options, refund_options].hash
     end
 
     # Builds the object from hash

@@ -24,7 +24,7 @@ module CyberSource
     #
     # @param post_device_search_request 
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse2008]
+    # @return [InlineResponse2009]
     #
     def post_search_query(post_device_search_request, opts = {})
       data, status_code, headers = post_search_query_with_http_info(post_device_search_request, opts)
@@ -35,7 +35,7 @@ module CyberSource
     # Retrieves list of terminals in paginated format.
     # @param post_device_search_request 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse2008, Fixnum, Hash)>] InlineResponse2008 data, response status code and response headers
+    # @return [Array<(InlineResponse2009, Fixnum, Hash)>] InlineResponse2009 data, response status code and response headers
     def post_search_query_with_http_info(post_device_search_request, opts = {})
 
       if @api_client.config.debugging
@@ -88,7 +88,7 @@ module CyberSource
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'InlineResponse2008',
+        :return_type => 'InlineResponse2009',
         :isResponseMLEForApi => is_response_mle_for_api)
       if @api_client.config.debugging
         begin
@@ -105,7 +105,7 @@ module CyberSource
     #
     # @param post_device_search_request_v3 
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse20010]
+    # @return [InlineResponse20011]
     #
     def post_search_query_v3(post_device_search_request_v3, opts = {})
       data, status_code, headers = post_search_query_v3_with_http_info(post_device_search_request_v3, opts)
@@ -116,7 +116,7 @@ module CyberSource
     # Search for devices matching a given search query.  The search query supports serialNumber, readerId, terminalId, status, statusChangeReason or organizationId  Matching results are paginated. 
     # @param post_device_search_request_v3 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse20010, Fixnum, Hash)>] InlineResponse20010 data, response status code and response headers
+    # @return [Array<(InlineResponse20011, Fixnum, Hash)>] InlineResponse20011 data, response status code and response headers
     def post_search_query_v3_with_http_info(post_device_search_request_v3, opts = {})
 
       if @api_client.config.debugging
@@ -169,7 +169,7 @@ module CyberSource
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'InlineResponse20010',
+        :return_type => 'InlineResponse20011',
         :isResponseMLEForApi => is_response_mle_for_api)
       if @api_client.config.debugging
         begin

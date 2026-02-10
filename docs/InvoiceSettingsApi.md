@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **get_invoice_settings**
-> InvoicingV2InvoiceSettingsGet200Response get_invoice_settings
+> InvoicingV2InvoiceSettingsGet200Response get_invoice_settings(opts)
 
 Get Invoice Settings
 
@@ -22,9 +22,13 @@ require 'cybersource_rest_client'
 
 api_instance = CyberSource::InvoiceSettingsApi.new
 
+opts = { 
+  product_type: 'product_type_example' # String | Allows you to choose which product type settings you want to update.
+}
+
 begin
   #Get Invoice Settings
-  result = api_instance.get_invoice_settings
+  result = api_instance.get_invoice_settings(opts)
   p result
 rescue CyberSource::ApiError => e
   puts "Exception when calling InvoiceSettingsApi->get_invoice_settings: #{e}"
@@ -32,7 +36,10 @@ end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **product_type** | **String**| Allows you to choose which product type settings you want to update. | [optional] 
 
 ### Return type
 
@@ -50,7 +57,7 @@ No authorization required
 
 
 # **update_invoice_settings**
-> InvoicingV2InvoiceSettingsGet200Response update_invoice_settings(invoice_settings_request)
+> InvoicingV2InvoiceSettingsGet200Response update_invoice_settings(invoice_settings_request, opts)
 
 Update Invoice Settings
 
@@ -65,10 +72,13 @@ api_instance = CyberSource::InvoiceSettingsApi.new
 
 invoice_settings_request = CyberSource::InvoiceSettingsRequest.new # InvoiceSettingsRequest | 
 
+opts = { 
+  product_type: 'product_type_example' # String | Allows you to choose which product type settings you want to update.
+}
 
 begin
   #Update Invoice Settings
-  result = api_instance.update_invoice_settings(invoice_settings_request)
+  result = api_instance.update_invoice_settings(invoice_settings_request, opts)
   p result
 rescue CyberSource::ApiError => e
   puts "Exception when calling InvoiceSettingsApi->update_invoice_settings: #{e}"
@@ -80,6 +90,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **invoice_settings_request** | [**InvoiceSettingsRequest**](InvoiceSettingsRequest.md)|  | 
+ **product_type** | **String**| Allows you to choose which product type settings you want to update. | [optional] 
 
 ### Return type
 
