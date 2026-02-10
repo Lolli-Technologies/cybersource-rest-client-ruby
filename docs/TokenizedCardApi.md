@@ -61,7 +61,7 @@ No authorization required
 
 
 # **get_tokenized_card**
-> TokenizedcardRequest get_tokenized_card(tokenized_card_id, opts)
+> InlineResponse2001 get_tokenized_card(tokenized_card_id, opts)
 
 Retrieve a Tokenized Card
 
@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TokenizedcardRequest**](TokenizedcardRequest.md)
+[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 
@@ -164,7 +164,7 @@ No authorization required
 
 
 # **post_tokenized_card**
-> TokenizedcardRequest post_tokenized_card(tokenizedcard_request, opts)
+> InlineResponse2001 post_tokenized_card(post_tokenized_card_request, opts)
 
 Create a Tokenized Card
 
@@ -177,7 +177,7 @@ require 'cybersource_rest_client'
 
 api_instance = CyberSource::TokenizedCardApi.new
 
-tokenizedcard_request = CyberSource::TokenizedcardRequest.new # TokenizedcardRequest | 
+post_tokenized_card_request = CyberSource::PostTokenizedCardRequest.new # PostTokenizedCardRequest | 
 
 opts = { 
   profile_id: 'profile_id_example' # String | The Id of a profile containing user specific TMS configuration.
@@ -185,7 +185,7 @@ opts = {
 
 begin
   #Create a Tokenized Card
-  result = api_instance.post_tokenized_card(tokenizedcard_request, opts)
+  result = api_instance.post_tokenized_card(post_tokenized_card_request, opts)
   p result
 rescue CyberSource::ApiError => e
   puts "Exception when calling TokenizedCardApi->post_tokenized_card: #{e}"
@@ -196,12 +196,12 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tokenizedcard_request** | [**TokenizedcardRequest**](TokenizedcardRequest.md)|  | 
+ **post_tokenized_card_request** | [**PostTokenizedCardRequest**](PostTokenizedCardRequest.md)|  | 
  **profile_id** | **String**| The Id of a profile containing user specific TMS configuration. | [optional] 
 
 ### Return type
 
-[**TokenizedcardRequest**](TokenizedcardRequest.md)
+[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 

@@ -26,7 +26,7 @@ module CyberSource
     # @param token_provider The token provider.
     # @param asset_type The type of asset.
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse2001]
+    # @return [InlineResponse2002]
     #
     def get_card_art_asset(instrument_identifier_id, token_provider, asset_type, opts = {})
       data, status_code, headers = get_card_art_asset_with_http_info(instrument_identifier_id, token_provider, asset_type, opts)
@@ -39,7 +39,7 @@ module CyberSource
     # @param token_provider The token provider.
     # @param asset_type The type of asset.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse2001, Fixnum, Hash)>] InlineResponse2001 data, response status code and response headers
+    # @return [Array<(InlineResponse2002, Fixnum, Hash)>] InlineResponse2002 data, response status code and response headers
     def get_card_art_asset_with_http_info(instrument_identifier_id, token_provider, asset_type, opts = {})
 
       if @api_client.config.debugging
@@ -110,7 +110,7 @@ module CyberSource
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'InlineResponse2001',
+        :return_type => 'InlineResponse2002',
         :isResponseMLEForApi => is_response_mle_for_api)
       if @api_client.config.debugging
         begin
@@ -122,8 +122,8 @@ module CyberSource
       end
       return data, status_code, headers
     end
-    # Generate Payment Credentials for a TMS Token
-    # |  |  |  |     | --- | --- | --- |     |**Token**<br>A Token can represent your tokenized Customer, Payment Instrument, Instrument Identifier or Tokenized Card information.|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|**Payment Credentials**<br>Contains payment information such as the network token, generated cryptogram for Visa & MasterCard or dynamic CVV for Amex in a JSON Web Encryption (JWE) response.<br>Your system can use this API to retrieve the Payment Credentials for an existing Customer, Payment Instrument, Instrument Identifier or Tokenized Card.<br>Optionally, **authenticated identities** information from Passkey authentication can be provided to potentially achieve liability shift, which may result in the return of an e-commerce indicator of 5 if successful. 
+    # Generate Payment Credentials v2
+    # **Note**: This resource will be replace by [payment credentials version 3](#/paths/~1tms~1v3~1tokens~1{tokenId}~1payment-credentials/post). The SDK will remain available for now; however, it will no longer be documented or maintain in the Developer Centre.<br> **Token**<br>A Token can represent your tokenized Customer, Payment Instrument, Instrument Identifier or Tokenized Card information.<br> **Payment Credentials**<br>Contains payment information such as the network token, generated cryptogram for Visa & MasterCard or dynamic CVV for Amex in a JSON Web Encryption (JWE) response.<br>Your system can use this API to retrieve the Payment Credentials for an existing Customer, Payment Instrument, Instrument Identifier or Tokenized Card.<br>Optionally, **authenticated identities** information from Passkey authentication can be provided to potentially achieve liability shift, which may result in the return of an e-commerce indicator of 5 if successful. 
     #
     # @param token_id The Id of a token representing a Customer, Payment Instrument or Instrument Identifier.
     # @param post_payment_credentials_request 
@@ -136,8 +136,8 @@ module CyberSource
       return data, status_code, headers
     end
 
-    # Generate Payment Credentials for a TMS Token
-    # |  |  |  |     | --- | --- | --- |     |**Token**&lt;br&gt;A Token can represent your tokenized Customer, Payment Instrument, Instrument Identifier or Tokenized Card information.|&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;|**Payment Credentials**&lt;br&gt;Contains payment information such as the network token, generated cryptogram for Visa &amp; MasterCard or dynamic CVV for Amex in a JSON Web Encryption (JWE) response.&lt;br&gt;Your system can use this API to retrieve the Payment Credentials for an existing Customer, Payment Instrument, Instrument Identifier or Tokenized Card.&lt;br&gt;Optionally, **authenticated identities** information from Passkey authentication can be provided to potentially achieve liability shift, which may result in the return of an e-commerce indicator of 5 if successful. 
+    # Generate Payment Credentials v2
+    # **Note**: This resource will be replace by [payment credentials version 3](#/paths/~1tms~1v3~1tokens~1{tokenId}~1payment-credentials/post). The SDK will remain available for now; however, it will no longer be documented or maintain in the Developer Centre.&lt;br&gt; **Token**&lt;br&gt;A Token can represent your tokenized Customer, Payment Instrument, Instrument Identifier or Tokenized Card information.&lt;br&gt; **Payment Credentials**&lt;br&gt;Contains payment information such as the network token, generated cryptogram for Visa &amp; MasterCard or dynamic CVV for Amex in a JSON Web Encryption (JWE) response.&lt;br&gt;Your system can use this API to retrieve the Payment Credentials for an existing Customer, Payment Instrument, Instrument Identifier or Tokenized Card.&lt;br&gt;Optionally, **authenticated identities** information from Passkey authentication can be provided to potentially achieve liability shift, which may result in the return of an e-commerce indicator of 5 if successful. 
     # @param token_id The Id of a token representing a Customer, Payment Instrument or Instrument Identifier.
     # @param post_payment_credentials_request 
     # @param [Hash] opts the optional parameters
@@ -181,7 +181,7 @@ module CyberSource
       # http body (model)
       post_body = @api_client.object_to_http_body(post_payment_credentials_request)
       sdk_tracker = SdkTracker.new
-      post_body = sdk_tracker.insert_developer_id_tracker(post_body, 'PostPaymentCredentialsRequest', @api_client.config.host, @api_client.merchantconfig.defaultDeveloperId)
+      post_body = sdk_tracker.insert_developer_id_tracker(post_body, 'PostPaymentCredentialsRequest1', @api_client.config.host, @api_client.merchantconfig.defaultDeveloperId)
       inbound_mle_status = "optional"
       if MLEUtility.check_is_mle_for_API(@api_client.merchantconfig, inbound_mle_status, ["post_token_payment_credentials","post_token_payment_credentials_with_http_info"])
         begin
@@ -206,6 +206,96 @@ module CyberSource
         begin
         raise
             @api_client.config.logger.debug "API called: TokenApi#post_token_payment_credentials\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        rescue
+            puts 'Cannot write to log'
+        end
+      end
+      return data, status_code, headers
+    end
+    # Generate Payment Credentials Latest Version v3
+    # **Payment Credentials**<br>Contains payment information such as the network token, generated TAVV cryptogram for Visa & MasterCard, dynamic CVV for Amex, or DTVV cryptogram for VISA. This latest version (v3) returns the Primary Account Number details, if the network token is not present. The response is provided in JSON Web Encryption (JWE) format. <br>Your system can use this API to retrieve the Payment Credentials for an existing Customer, Payment Instrument, Instrument Identifier or Tokenized Card.<br>Optionally, **authenticated identities** information from Passkey authentication can be provided to potentially achieve liability shift, which may result in the return of an e-commerce indicator of 5 if successful. 
+    #
+    # @param token_id The Id of a token representing a Customer, Payment Instrument or Instrument Identifier.
+    # @param post_payment_credentials_request 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :profile_id The Id of a profile containing user specific TMS configuration.
+    # @return [InlineResponse2011]
+    #
+    def post_token_payment_credentials_v3(token_id, post_payment_credentials_request, opts = {})
+      data, status_code, headers = post_token_payment_credentials_v3_with_http_info(token_id, post_payment_credentials_request, opts)
+      return data, status_code, headers
+    end
+
+    # Generate Payment Credentials Latest Version v3
+    # **Payment Credentials**&lt;br&gt;Contains payment information such as the network token, generated TAVV cryptogram for Visa &amp; MasterCard, dynamic CVV for Amex, or DTVV cryptogram for VISA. This latest version (v3) returns the Primary Account Number details, if the network token is not present. The response is provided in JSON Web Encryption (JWE) format. &lt;br&gt;Your system can use this API to retrieve the Payment Credentials for an existing Customer, Payment Instrument, Instrument Identifier or Tokenized Card.&lt;br&gt;Optionally, **authenticated identities** information from Passkey authentication can be provided to potentially achieve liability shift, which may result in the return of an e-commerce indicator of 5 if successful. 
+    # @param token_id The Id of a token representing a Customer, Payment Instrument or Instrument Identifier.
+    # @param post_payment_credentials_request 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :profile_id The Id of a profile containing user specific TMS configuration.
+    # @return [Array<(InlineResponse2011, Fixnum, Hash)>] InlineResponse2011 data, response status code and response headers
+    def post_token_payment_credentials_v3_with_http_info(token_id, post_payment_credentials_request, opts = {})
+
+      if @api_client.config.debugging
+          begin
+            raise
+                @api_client.config.logger.debug 'Calling API: TokenApi.post_token_payment_credentials_v3 ...'
+            rescue
+                puts 'Cannot write to log'
+            end
+      end
+      # verify the required parameter 'token_id' is set
+      if @api_client.config.client_side_validation && token_id.nil?
+        fail ArgumentError, "Missing the required parameter 'token_id' when calling TokenApi.post_token_payment_credentials_v3"
+      end
+      # verify the required parameter 'post_payment_credentials_request' is set
+      if @api_client.config.client_side_validation && post_payment_credentials_request.nil?
+        fail ArgumentError, "Missing the required parameter 'post_payment_credentials_request' when calling TokenApi.post_token_payment_credentials_v3"
+      end
+      # resource path
+      local_var_path = 'tms/v3/tokens/{tokenId}/payment-credentials'.sub('{' + 'tokenId' + '}', token_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/jose;charset=utf-8'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json;charset=utf-8'])
+      header_params[:'profile-id'] = opts[:'profile_id'] if !opts[:'profile_id'].nil?
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(post_payment_credentials_request)
+      sdk_tracker = SdkTracker.new
+      post_body = sdk_tracker.insert_developer_id_tracker(post_body, 'PostPaymentCredentialsRequest', @api_client.config.host, @api_client.merchantconfig.defaultDeveloperId)
+      inbound_mle_status = "optional"
+      if MLEUtility.check_is_mle_for_API(@api_client.merchantconfig, inbound_mle_status, ["post_token_payment_credentials_v3","post_token_payment_credentials_v3_with_http_info"])
+        begin
+          post_body = MLEUtility.encrypt_request_payload(@api_client.merchantconfig, post_body)
+        rescue
+          raise
+        end
+      end
+
+      is_response_mle_for_api = MLEUtility.check_is_response_mle_for_api(@api_client.merchantconfig, ["post_token_payment_credentials_v3","post_token_payment_credentials_v3_with_http_info"])
+
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'InlineResponse2011',
+        :isResponseMLEForApi => is_response_mle_for_api)
+      if @api_client.config.debugging
+        begin
+        raise
+            @api_client.config.logger.debug "API called: TokenApi#post_token_payment_credentials_v3\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
         rescue
             puts 'Cannot write to log'
         end

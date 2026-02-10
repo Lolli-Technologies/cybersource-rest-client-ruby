@@ -85,6 +85,9 @@ module CyberSource
     # This field indicates if the card is eligible for Equated Monthly Installments (EMI). Possible values:     - `true`     - `false` 
     attr_accessor :emi_eligible
 
+    # This field indicates if the BIN is designated for fuel/fleet usage. These specialized BINs support additional Level2/Level 3 transaction data. Possible values:     - `true`     - `false` 
+    attr_accessor :fleet_card
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -111,7 +114,8 @@ module CyberSource
         :'product_id_subtype' => :'productIdSubtype',
         :'three_ds_support' => :'threeDSSupport',
         :'si_eligible' => :'siEligible',
-        :'emi_eligible' => :'emiEligible'
+        :'emi_eligible' => :'emiEligible',
+        :'fleet_card' => :'fleetCard'
       }
     end
 
@@ -141,7 +145,8 @@ module CyberSource
         :'product_id_subtype' => :'product_id_subtype',
         :'three_ds_support' => :'three_ds_support',
         :'si_eligible' => :'si_eligible',
-        :'emi_eligible' => :'emi_eligible'
+        :'emi_eligible' => :'emi_eligible',
+        :'fleet_card' => :'fleet_card'
       }
     end
 
@@ -171,7 +176,8 @@ module CyberSource
         :'product_id_subtype' => :'String',
         :'three_ds_support' => :'BOOLEAN',
         :'si_eligible' => :'BOOLEAN',
-        :'emi_eligible' => :'BOOLEAN'
+        :'emi_eligible' => :'BOOLEAN',
+        :'fleet_card' => :'BOOLEAN'
       }
     end
 
@@ -278,6 +284,10 @@ module CyberSource
       if attributes.has_key?(:'emiEligible')
         self.emi_eligible = attributes[:'emiEligible']
       end
+
+      if attributes.has_key?(:'fleetCard')
+        self.fleet_card = attributes[:'fleetCard']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -363,7 +373,8 @@ module CyberSource
           product_id_subtype == o.product_id_subtype &&
           three_ds_support == o.three_ds_support &&
           si_eligible == o.si_eligible &&
-          emi_eligible == o.emi_eligible
+          emi_eligible == o.emi_eligible &&
+          fleet_card == o.fleet_card
     end
 
     # @see the `==` method
@@ -375,7 +386,7 @@ module CyberSource
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [account_funding_source, account_funding_source_sub_type, card_product, message_type, acceptance_level, card_platform, combo_card, corporate_purchase, health_card, shared_bin, pos_domestic_only, gambling_allowed, commercial_card_level2, commercial_card_level3, exempt_bin, account_level_management, online_gambling_block, auto_substantiation, flex_credential, product_id, product_id_subtype, three_ds_support, si_eligible, emi_eligible].hash
+      [account_funding_source, account_funding_source_sub_type, card_product, message_type, acceptance_level, card_platform, combo_card, corporate_purchase, health_card, shared_bin, pos_domestic_only, gambling_allowed, commercial_card_level2, commercial_card_level3, exempt_bin, account_level_management, online_gambling_block, auto_substantiation, flex_credential, product_id, product_id_subtype, three_ds_support, si_eligible, emi_eligible, fleet_card].hash
     end
 
     # Builds the object from hash

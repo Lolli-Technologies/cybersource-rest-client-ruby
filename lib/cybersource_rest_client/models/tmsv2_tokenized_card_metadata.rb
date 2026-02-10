@@ -12,7 +12,6 @@ Swagger Codegen version: 2.4.38
 require 'date'
 
 module CyberSource
-  # Metadata associated with the tokenized card. 
   class Tmsv2TokenizedCardMetadata
     attr_accessor :card_art
 

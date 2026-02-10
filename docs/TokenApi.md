@@ -5,11 +5,12 @@ All URIs are relative to *https://apitest.cybersource.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_card_art_asset**](TokenApi.md#get_card_art_asset) | **GET** /tms/v2/tokens/{instrumentIdentifierId}/{tokenProvider}/assets/{assetType} | Retrieve Card Art
-[**post_token_payment_credentials**](TokenApi.md#post_token_payment_credentials) | **POST** /tms/v2/tokens/{tokenId}/payment-credentials | Generate Payment Credentials for a TMS Token
+[**post_token_payment_credentials**](TokenApi.md#post_token_payment_credentials) | **POST** /tms/v2/tokens/{tokenId}/payment-credentials | Generate Payment Credentials v2
+[**post_token_payment_credentials_v3**](TokenApi.md#post_token_payment_credentials_v3) | **POST** /tms/v3/tokens/{tokenId}/payment-credentials | Generate Payment Credentials Latest Version v3
 
 
 # **get_card_art_asset**
-> InlineResponse2001 get_card_art_asset(instrument_identifier_id, token_provider, asset_type)
+> InlineResponse2002 get_card_art_asset(instrument_identifier_id, token_provider, asset_type)
 
 Retrieve Card Art
 
@@ -48,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### Authorization
 
@@ -64,9 +65,63 @@ No authorization required
 # **post_token_payment_credentials**
 > String post_token_payment_credentials(token_id, post_payment_credentials_request, opts)
 
-Generate Payment Credentials for a TMS Token
+Generate Payment Credentials v2
 
-|  |  |  |     | --- | --- | --- |     |**Token**<br>A Token can represent your tokenized Customer, Payment Instrument, Instrument Identifier or Tokenized Card information.|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|**Payment Credentials**<br>Contains payment information such as the network token, generated cryptogram for Visa & MasterCard or dynamic CVV for Amex in a JSON Web Encryption (JWE) response.<br>Your system can use this API to retrieve the Payment Credentials for an existing Customer, Payment Instrument, Instrument Identifier or Tokenized Card.<br>Optionally, **authenticated identities** information from Passkey authentication can be provided to potentially achieve liability shift, which may result in the return of an e-commerce indicator of 5 if successful. 
+**Note**: This resource will be replace by [payment credentials version 3](#/paths/~1tms~1v3~1tokens~1{tokenId}~1payment-credentials/post). The SDK will remain available for now; however, it will no longer be documented or maintain in the Developer Centre.<br> **Token**<br>A Token can represent your tokenized Customer, Payment Instrument, Instrument Identifier or Tokenized Card information.<br> **Payment Credentials**<br>Contains payment information such as the network token, generated cryptogram for Visa & MasterCard or dynamic CVV for Amex in a JSON Web Encryption (JWE) response.<br>Your system can use this API to retrieve the Payment Credentials for an existing Customer, Payment Instrument, Instrument Identifier or Tokenized Card.<br>Optionally, **authenticated identities** information from Passkey authentication can be provided to potentially achieve liability shift, which may result in the return of an e-commerce indicator of 5 if successful. 
+
+### Example
+```ruby
+# load the gem
+require 'cybersource_rest_client'
+
+api_instance = CyberSource::TokenApi.new
+
+token_id = 'token_id_example' # String | The Id of a token representing a Customer, Payment Instrument or Instrument Identifier.
+
+post_payment_credentials_request = CyberSource::PostPaymentCredentialsRequest1.new # PostPaymentCredentialsRequest1 | 
+
+opts = { 
+  profile_id: 'profile_id_example' # String | The Id of a profile containing user specific TMS configuration.
+}
+
+begin
+  #Generate Payment Credentials v2
+  result = api_instance.post_token_payment_credentials(token_id, post_payment_credentials_request, opts)
+  p result
+rescue CyberSource::ApiError => e
+  puts "Exception when calling TokenApi->post_token_payment_credentials: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token_id** | **String**| The Id of a token representing a Customer, Payment Instrument or Instrument Identifier. | 
+ **post_payment_credentials_request** | [**PostPaymentCredentialsRequest1**](PostPaymentCredentialsRequest1.md)|  | 
+ **profile_id** | **String**| The Id of a profile containing user specific TMS configuration. | [optional] 
+
+### Return type
+
+**String**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json;charset=utf-8
+ - **Accept**: application/jose;charset=utf-8
+
+
+
+# **post_token_payment_credentials_v3**
+> InlineResponse2011 post_token_payment_credentials_v3(token_id, post_payment_credentials_request, opts)
+
+Generate Payment Credentials Latest Version v3
+
+**Payment Credentials**<br>Contains payment information such as the network token, generated TAVV cryptogram for Visa & MasterCard, dynamic CVV for Amex, or DTVV cryptogram for VISA. This latest version (v3) returns the Primary Account Number details, if the network token is not present. The response is provided in JSON Web Encryption (JWE) format. <br>Your system can use this API to retrieve the Payment Credentials for an existing Customer, Payment Instrument, Instrument Identifier or Tokenized Card.<br>Optionally, **authenticated identities** information from Passkey authentication can be provided to potentially achieve liability shift, which may result in the return of an e-commerce indicator of 5 if successful. 
 
 ### Example
 ```ruby
@@ -84,11 +139,11 @@ opts = {
 }
 
 begin
-  #Generate Payment Credentials for a TMS Token
-  result = api_instance.post_token_payment_credentials(token_id, post_payment_credentials_request, opts)
+  #Generate Payment Credentials Latest Version v3
+  result = api_instance.post_token_payment_credentials_v3(token_id, post_payment_credentials_request, opts)
   p result
 rescue CyberSource::ApiError => e
-  puts "Exception when calling TokenApi->post_token_payment_credentials: #{e}"
+  puts "Exception when calling TokenApi->post_token_payment_credentials_v3: #{e}"
 end
 ```
 
@@ -102,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**String**
+[**InlineResponse2011**](InlineResponse2011.md)
 
 ### Authorization
 

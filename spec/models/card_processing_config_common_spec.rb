@@ -157,6 +157,12 @@ describe 'CardProcessingConfigCommon' do
     end
   end
 
+  describe 'test attribute "acquirer_agreement"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "government_controlled"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

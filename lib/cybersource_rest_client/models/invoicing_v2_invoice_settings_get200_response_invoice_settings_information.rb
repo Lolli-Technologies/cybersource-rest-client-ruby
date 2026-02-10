@@ -57,6 +57,8 @@ module CyberSource
     # A list of custom labels that allows you to override (rename) default field names and control the visibility of specific fields on invoices and items. If the list is empty, the labels will not be overwritten. 
     attr_accessor :custom_labels
 
+    attr_accessor :custom_redirect_urls
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -74,7 +76,8 @@ module CyberSource
         :'phone_number' => :'phoneNumber',
         :'email' => :'email',
         :'enable_merchant_email_notifications' => :'enableMerchantEmailNotifications',
-        :'custom_labels' => :'customLabels'
+        :'custom_labels' => :'customLabels',
+        :'custom_redirect_urls' => :'customRedirectUrls'
       }
     end
 
@@ -95,7 +98,8 @@ module CyberSource
         :'phone_number' => :'phone_number',
         :'email' => :'email',
         :'enable_merchant_email_notifications' => :'enable_merchant_email_notifications',
-        :'custom_labels' => :'custom_labels'
+        :'custom_labels' => :'custom_labels',
+        :'custom_redirect_urls' => :'custom_redirect_urls'
       }
     end
 
@@ -116,7 +120,8 @@ module CyberSource
         :'phone_number' => :'BOOLEAN',
         :'email' => :'BOOLEAN',
         :'enable_merchant_email_notifications' => :'BOOLEAN',
-        :'custom_labels' => :'Array<InvoicingV2InvoicesPost201ResponseInvoiceInformationCustomLabels>'
+        :'custom_labels' => :'Array<InvoicingV2InvoicesPost201ResponseInvoiceInformationCustomLabels>',
+        :'custom_redirect_urls' => :'InvoicingV2InvoiceSettingsGet200ResponseInvoiceSettingsInformationCustomRedirectUrls'
       }
     end
 
@@ -201,6 +206,10 @@ module CyberSource
           self.custom_labels = value
         end
       end
+
+      if attributes.has_key?(:'customRedirectUrls')
+        self.custom_redirect_urls = attributes[:'customRedirectUrls']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -271,7 +280,8 @@ module CyberSource
           phone_number == o.phone_number &&
           email == o.email &&
           enable_merchant_email_notifications == o.enable_merchant_email_notifications &&
-          custom_labels == o.custom_labels
+          custom_labels == o.custom_labels &&
+          custom_redirect_urls == o.custom_redirect_urls
     end
 
     # @see the `==` method
@@ -283,7 +293,7 @@ module CyberSource
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [merchant_logo, merchant_display_name, custom_email_message, enable_reminders, header_style, delivery_language, default_currency_code, payer_authentication3_ds_version, show_vat_number, vat_registration_number, ship_to, phone_number, email, enable_merchant_email_notifications, custom_labels].hash
+      [merchant_logo, merchant_display_name, custom_email_message, enable_reminders, header_style, delivery_language, default_currency_code, payer_authentication3_ds_version, show_vat_number, vat_registration_number, ship_to, phone_number, email, enable_merchant_email_notifications, custom_labels, custom_redirect_urls].hash
     end
 
     # Builds the object from hash
