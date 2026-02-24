@@ -13,39 +13,36 @@ require 'date'
 
 module CyberSource
   class InlineResponse2011
-    # UUID uniquely generated for this comments. 
-    attr_accessor :id
+    attr_accessor :_links
 
-    # Time of request in UTC. Format: `YYYY-MM-DDThh:mm:ssZ` **Example** `2016-08-11T22:47:57Z` equals August 11, 2016, at 22:47:57 (10:47:57 p.m.). The `T` separates the date and the time. The `Z` indicates UTC.  Returned by Cybersource for all services. 
-    attr_accessor :submit_time_utc
+    attr_accessor :card
 
-    # Status of the comment creation. Possible values are: - `COMPLETED` 
-    attr_accessor :status
+    attr_accessor :tokenized_card
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'submit_time_utc' => :'submitTimeUtc',
-        :'status' => :'status'
+        :'_links' => :'_links',
+        :'card' => :'card',
+        :'tokenized_card' => :'tokenizedCard'
       }
     end
 
     # Attribute mapping from JSON key to ruby-style variable name.
     def self.json_map
       {
-        :'id' => :'id',
-        :'submit_time_utc' => :'submit_time_utc',
-        :'status' => :'status'
+        :'_links' => :'_links',
+        :'card' => :'card',
+        :'tokenized_card' => :'tokenized_card'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'id' => :'String',
-        :'submit_time_utc' => :'String',
-        :'status' => :'String'
+        :'_links' => :'InlineResponse2011Links',
+        :'card' => :'InlineResponse2011Card',
+        :'tokenized_card' => :'InlineResponse2011TokenizedCard'
       }
     end
 
@@ -57,16 +54,16 @@ module CyberSource
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.has_key?(:'_links')
+        self._links = attributes[:'_links']
       end
 
-      if attributes.has_key?(:'submitTimeUtc')
-        self.submit_time_utc = attributes[:'submitTimeUtc']
+      if attributes.has_key?(:'card')
+        self.card = attributes[:'card']
       end
 
-      if attributes.has_key?(:'status')
-        self.status = attributes[:'status']
+      if attributes.has_key?(:'tokenizedCard')
+        self.tokenized_card = attributes[:'tokenizedCard']
       end
     end
 
@@ -83,20 +80,14 @@ module CyberSource
       true
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] id Value to be assigned
-    def id=(id)
-      @id = id
-    end
-
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          submit_time_utc == o.submit_time_utc &&
-          status == o.status
+          _links == o._links &&
+          card == o.card &&
+          tokenized_card == o.tokenized_card
     end
 
     # @see the `==` method
@@ -108,7 +99,7 @@ module CyberSource
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, submit_time_utc, status].hash
+      [_links, card, tokenized_card].hash
     end
 
     # Builds the object from hash

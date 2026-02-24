@@ -35,6 +35,7 @@ describe 'InvoiceSettingsApi' do
   # Get Invoice Settings
   # Allows you to retrieve the invoice settings for the payment page.
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :product_type Allows you to choose which product type settings you want to update.
   # @return [InvoicingV2InvoiceSettingsGet200Response]
   describe 'get_invoice_settings test' do
     it 'should work' do
@@ -47,6 +48,7 @@ describe 'InvoiceSettingsApi' do
   # Allows you to customize the payment page, the checkout experience, email communication and payer authentication. You can customize the invoice to match your brand with your business name, logo and brand colors, and a VAT Tax number. You can choose to capture the payers shipping details, phone number and email during the checkout process. You can add a custom message to all invoice emails and enable or disable payer authentication for invoice payments.
   # @param invoice_settings_request 
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :product_type Allows you to choose which product type settings you want to update.
   # @return [InvoicingV2InvoiceSettingsGet200Response]
   describe 'update_invoice_settings test' do
     it 'should work' do

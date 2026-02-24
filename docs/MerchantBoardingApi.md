@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **get_registration**
-> InlineResponse2004 get_registration(registration_id)
+> InlineResponse2005 get_registration(registration_id)
 
 Gets all the information on a boarding registration
 
@@ -42,7 +42,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**InlineResponse2005**](InlineResponse2005.md)
 
 ### Authorization
 
@@ -56,7 +56,7 @@ No authorization required
 
 
 # **post_registration**
-> InlineResponse2013 post_registration(post_registration_body, opts)
+> InlineResponse2014 post_registration(post_registration_body, opts)
 
 Create a boarding registration
 
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2013**](InlineResponse2013.md)
+[**InlineResponse2014**](InlineResponse2014.md)
 
 ### Authorization
 

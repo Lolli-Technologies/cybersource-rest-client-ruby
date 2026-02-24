@@ -62,6 +62,8 @@ module CyberSource
 
     attr_accessor :merchant_information
 
+    attr_accessor :clearing_information
+
     attr_accessor :embedded_actions
 
     attr_accessor :watchlist_screening_information
@@ -91,6 +93,7 @@ module CyberSource
         :'risk_information' => :'riskInformation',
         :'consumer_authentication_information' => :'consumerAuthenticationInformation',
         :'merchant_information' => :'merchantInformation',
+        :'clearing_information' => :'clearingInformation',
         :'embedded_actions' => :'embeddedActions',
         :'watchlist_screening_information' => :'watchlistScreeningInformation'
       }
@@ -121,6 +124,7 @@ module CyberSource
         :'risk_information' => :'risk_information',
         :'consumer_authentication_information' => :'consumer_authentication_information',
         :'merchant_information' => :'merchant_information',
+        :'clearing_information' => :'clearing_information',
         :'embedded_actions' => :'embedded_actions',
         :'watchlist_screening_information' => :'watchlist_screening_information'
       }
@@ -151,6 +155,7 @@ module CyberSource
         :'risk_information' => :'PtsV2PaymentsPost201ResponseRiskInformation',
         :'consumer_authentication_information' => :'PtsV2PaymentsPost201ResponseConsumerAuthenticationInformation',
         :'merchant_information' => :'PtsV2PaymentsPost201ResponseMerchantInformation',
+        :'clearing_information' => :'PtsV2PaymentsPost201ResponseClearingInformation',
         :'embedded_actions' => :'PtsV2PaymentsPost201ResponseEmbeddedActions',
         :'watchlist_screening_information' => :'PtsV2PaymentsPost201ResponseWatchlistScreeningInformation'
       }
@@ -252,6 +257,10 @@ module CyberSource
         self.merchant_information = attributes[:'merchantInformation']
       end
 
+      if attributes.has_key?(:'clearingInformation')
+        self.clearing_information = attributes[:'clearingInformation']
+      end
+
       if attributes.has_key?(:'embeddedActions')
         self.embedded_actions = attributes[:'embeddedActions']
       end
@@ -313,6 +322,7 @@ module CyberSource
           risk_information == o.risk_information &&
           consumer_authentication_information == o.consumer_authentication_information &&
           merchant_information == o.merchant_information &&
+          clearing_information == o.clearing_information &&
           embedded_actions == o.embedded_actions &&
           watchlist_screening_information == o.watchlist_screening_information
     end
@@ -326,7 +336,7 @@ module CyberSource
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [_links, id, message, submit_time_utc, status, reconciliation_id, error_information, client_reference_information, processing_information, processor_information, issuer_information, payment_account_information, payment_information, payment_insights_information, order_information, point_of_sale_information, installment_information, token_information, buyer_information, risk_information, consumer_authentication_information, merchant_information, embedded_actions, watchlist_screening_information].hash
+      [_links, id, message, submit_time_utc, status, reconciliation_id, error_information, client_reference_information, processing_information, processor_information, issuer_information, payment_account_information, payment_information, payment_insights_information, order_information, point_of_sale_information, installment_information, token_information, buyer_information, risk_information, consumer_authentication_information, merchant_information, clearing_information, embedded_actions, watchlist_screening_information].hash
     end
 
     # Builds the object from hash

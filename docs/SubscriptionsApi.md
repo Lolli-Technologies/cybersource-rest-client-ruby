@@ -177,7 +177,8 @@ opts = {
   offset: 56, # Integer | Page offset number.
   limit: 56, # Integer | Number of items to be returned. Default - `20`, Max - `100` 
   code: 'code_example', # String | Filter by Subscription Code
-  status: 'status_example' # String | Filter by Subscription Status
+  status: 'status_example', # String | Filter by Subscription Status
+  customer_id: 'customer_id_example' # String | Filter by Customer Id
 }
 
 begin
@@ -197,6 +198,7 @@ Name | Type | Description  | Notes
  **limit** | **Integer**| Number of items to be returned. Default - &#x60;20&#x60;, Max - &#x60;100&#x60;  | [optional] 
  **code** | **String**| Filter by Subscription Code | [optional] 
  **status** | **String**| Filter by Subscription Status | [optional] 
+ **customer_id** | **String**| Filter by Customer Id | [optional] 
 
 ### Return type
 

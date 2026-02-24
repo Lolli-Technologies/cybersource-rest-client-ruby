@@ -50,7 +50,7 @@ describe 'TokenizedCardApi' do
   # @param tokenized_card_id The Id of a tokenized card.
   # @param [Hash] opts the optional parameters
   # @option opts [String] :profile_id The Id of a profile containing user specific TMS configuration.
-  # @return [TokenizedcardRequest]
+  # @return [InlineResponse2001]
   describe 'get_tokenized_card test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -74,10 +74,10 @@ describe 'TokenizedCardApi' do
   # unit tests for post_tokenized_card
   # Create a Tokenized Card
   # |  |  |  | | --- | --- | --- | |**Tokenized cards**&lt;br&gt;A Tokenized card represents a network token. Network tokens perform better than regular card numbers and they are not necessarily invalidated when a cardholder loses their card, or it expires. 
-  # @param tokenizedcard_request 
+  # @param post_tokenized_card_request 
   # @param [Hash] opts the optional parameters
   # @option opts [String] :profile_id The Id of a profile containing user specific TMS configuration.
-  # @return [TokenizedcardRequest]
+  # @return [InlineResponse2001]
   describe 'post_tokenized_card test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

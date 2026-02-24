@@ -4,74 +4,11 @@ All URIs are relative to *https://apitest.cybersource.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_offer**](OffersApi.md#create_offer) | **POST** /vas/v1/currencyconversion | Create an Offer
 [**get_offer**](OffersApi.md#get_offer) | **GET** /vas/v1/currencyconversion/{id} | Retrieve an Offer
 
 
-# **create_offer**
-> InlineResponse2018 create_offer(content_type, x_requestid, v_c_merchant_id, v_c_correlation_id, v_c_organization_id, offer_request)
-
-Create an Offer
-
-Creates an offer record on the provider system. 
-
-### Example
-```ruby
-# load the gem
-require 'cybersource_rest_client'
-
-api_instance = CyberSource::OffersApi.new
-
-content_type = 'content_type_example' # String | 
-
-x_requestid = 'x_requestid_example' # String | 
-
-v_c_merchant_id = 'v_c_merchant_id_example' # String | 
-
-v_c_correlation_id = 'v_c_correlation_id_example' # String | 
-
-v_c_organization_id = 'v_c_organization_id_example' # String | 
-
-offer_request = CyberSource::OfferRequest.new # OfferRequest | 
-
-
-begin
-  #Create an Offer
-  result = api_instance.create_offer(content_type, x_requestid, v_c_merchant_id, v_c_correlation_id, v_c_organization_id, offer_request)
-  p result
-rescue CyberSource::ApiError => e
-  puts "Exception when calling OffersApi->create_offer: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **content_type** | **String**|  | 
- **x_requestid** | **String**|  | 
- **v_c_merchant_id** | **String**|  | 
- **v_c_correlation_id** | **String**|  | 
- **v_c_organization_id** | **String**|  | 
- **offer_request** | [**OfferRequest**](OfferRequest.md)|  | 
-
-### Return type
-
-[**InlineResponse2018**](InlineResponse2018.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json;charset=utf-8
- - **Accept**: application/hal+json;charset=utf-8
-
-
-
 # **get_offer**
-> InlineResponse20015 get_offer(content_type, x_requestid, v_c_merchant_id, v_c_correlation_id, v_c_organization_id, id)
+> InlineResponse20016 get_offer(content_type, x_requestid, v_c_merchant_id, v_c_correlation_id, v_c_organization_id, id)
 
 Retrieve an Offer
 
@@ -119,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20015**](InlineResponse20015.md)
+[**InlineResponse20016**](InlineResponse20016.md)
 
 ### Authorization
 

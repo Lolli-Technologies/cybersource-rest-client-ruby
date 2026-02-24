@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **find_products_to_subscribe**
-> Array&lt;InlineResponse2005&gt; find_products_to_subscribe(organization_id)
+> Array&lt;InlineResponse2006&gt; find_products_to_subscribe(organization_id)
 
 Find Products You Can Subscribe To
 
@@ -43,7 +43,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Array&lt;InlineResponse2005&gt;**](InlineResponse2005.md)
+[**Array&lt;InlineResponse2006&gt;**](InlineResponse2006.md)
 
 ### Authorization
 
@@ -57,7 +57,7 @@ No authorization required
 
 
 # **notification_subscriptions_v2_webhooks_post**
-> InlineResponse2015 notification_subscriptions_v2_webhooks_post(opts)
+> InlineResponse2016 notification_subscriptions_v2_webhooks_post(opts)
 
 Create a New Webhook Subscription
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2015**](InlineResponse2015.md)
+[**InlineResponse2016**](InlineResponse2016.md)
 
 ### Authorization
 
@@ -105,7 +105,7 @@ No authorization required
 
 
 # **save_sym_egress_key**
-> InlineResponse2014 save_sym_egress_key(v_c_sender_organization_id, v_c_permissions, opts)
+> InlineResponse2015 save_sym_egress_key(v_c_sender_organization_id, v_c_permissions, opts)
 
 Create Webhook Security Keys
 
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2014**](InlineResponse2014.md)
+[**InlineResponse2015**](InlineResponse2015.md)
 
 ### Authorization
 

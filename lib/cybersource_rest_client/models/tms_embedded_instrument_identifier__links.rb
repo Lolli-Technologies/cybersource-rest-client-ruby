@@ -17,11 +17,14 @@ module CyberSource
 
     attr_accessor :payment_instruments
 
+    attr_accessor :tokenized_cards
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'_self' => :'self',
-        :'payment_instruments' => :'paymentInstruments'
+        :'payment_instruments' => :'paymentInstruments',
+        :'tokenized_cards' => :'tokenized-cards'
       }
     end
 
@@ -29,7 +32,8 @@ module CyberSource
     def self.json_map
       {
         :'_self' => :'_self',
-        :'payment_instruments' => :'payment_instruments'
+        :'payment_instruments' => :'payment_instruments',
+        :'tokenized_cards' => :'tokenized_cards'
       }
     end
 
@@ -37,7 +41,8 @@ module CyberSource
     def self.swagger_types
       {
         :'_self' => :'TmsEmbeddedInstrumentIdentifierLinksSelf',
-        :'payment_instruments' => :'TmsEmbeddedInstrumentIdentifierLinksPaymentInstruments'
+        :'payment_instruments' => :'TmsEmbeddedInstrumentIdentifierLinksPaymentInstruments',
+        :'tokenized_cards' => :'TmsEmbeddedInstrumentIdentifierLinksTokenizedcards'
       }
     end
 
@@ -55,6 +60,10 @@ module CyberSource
 
       if attributes.has_key?(:'paymentInstruments')
         self.payment_instruments = attributes[:'paymentInstruments']
+      end
+
+      if attributes.has_key?(:'tokenized-cards')
+        self.tokenized_cards = attributes[:'tokenized-cards']
       end
     end
 
@@ -77,7 +86,8 @@ module CyberSource
       return true if self.equal?(o)
       self.class == o.class &&
           _self == o._self &&
-          payment_instruments == o.payment_instruments
+          payment_instruments == o.payment_instruments &&
+          tokenized_cards == o.tokenized_cards
     end
 
     # @see the `==` method
@@ -89,7 +99,7 @@ module CyberSource
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [_self, payment_instruments].hash
+      [_self, payment_instruments, tokenized_cards].hash
     end
 
     # Builds the object from hash

@@ -277,6 +277,7 @@ module CyberSource
     # @option opts [Integer] :limit Number of items to be returned. Default - &#x60;20&#x60;, Max - &#x60;100&#x60; 
     # @option opts [String] :code Filter by Subscription Code
     # @option opts [String] :status Filter by Subscription Status
+    # @option opts [String] :customer_id Filter by Customer Id
     # @return [GetAllSubscriptionsResponse]
     #
     def get_all_subscriptions(opts = {})
@@ -291,6 +292,7 @@ module CyberSource
     # @option opts [Integer] :limit Number of items to be returned. Default - &#x60;20&#x60;, Max - &#x60;100&#x60; 
     # @option opts [String] :code Filter by Subscription Code
     # @option opts [String] :status Filter by Subscription Status
+    # @option opts [String] :customer_id Filter by Customer Id
     # @return [Array<(GetAllSubscriptionsResponse, Fixnum, Hash)>] GetAllSubscriptionsResponse data, response status code and response headers
     def get_all_subscriptions_with_http_info(opts = {})
 
@@ -311,6 +313,7 @@ module CyberSource
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
       query_params[:'code'] = opts[:'code'] if !opts[:'code'].nil?
       query_params[:'status'] = opts[:'status'] if !opts[:'status'].nil?
+      query_params[:'customerId'] = opts[:'customer_id'] if !opts[:'customer_id'].nil?
 
       # header parameters
       header_params = {}

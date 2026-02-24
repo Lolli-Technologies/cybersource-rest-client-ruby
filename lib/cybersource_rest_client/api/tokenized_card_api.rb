@@ -110,7 +110,7 @@ module CyberSource
     # @param tokenized_card_id The Id of a tokenized card.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :profile_id The Id of a profile containing user specific TMS configuration.
-    # @return [TokenizedcardRequest]
+    # @return [InlineResponse2001]
     #
     def get_tokenized_card(tokenized_card_id, opts = {})
       data, status_code, headers = get_tokenized_card_with_http_info(tokenized_card_id, opts)
@@ -122,7 +122,7 @@ module CyberSource
     # @param tokenized_card_id The Id of a tokenized card.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :profile_id The Id of a profile containing user specific TMS configuration.
-    # @return [Array<(TokenizedcardRequest, Fixnum, Hash)>] TokenizedcardRequest data, response status code and response headers
+    # @return [Array<(InlineResponse2001, Fixnum, Hash)>] InlineResponse2001 data, response status code and response headers
     def get_tokenized_card_with_http_info(tokenized_card_id, opts = {})
 
       if @api_client.config.debugging
@@ -178,7 +178,7 @@ module CyberSource
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'TokenizedcardRequest',
+        :return_type => 'InlineResponse2001',
         :isResponseMLEForApi => is_response_mle_for_api)
       if @api_client.config.debugging
         begin
@@ -286,23 +286,23 @@ module CyberSource
     # Create a Tokenized Card
     # |  |  |  | | --- | --- | --- | |**Tokenized cards**<br>A Tokenized card represents a network token. Network tokens perform better than regular card numbers and they are not necessarily invalidated when a cardholder loses their card, or it expires. 
     #
-    # @param tokenizedcard_request 
+    # @param post_tokenized_card_request 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :profile_id The Id of a profile containing user specific TMS configuration.
-    # @return [TokenizedcardRequest]
+    # @return [InlineResponse2001]
     #
-    def post_tokenized_card(tokenizedcard_request, opts = {})
-      data, status_code, headers = post_tokenized_card_with_http_info(tokenizedcard_request, opts)
+    def post_tokenized_card(post_tokenized_card_request, opts = {})
+      data, status_code, headers = post_tokenized_card_with_http_info(post_tokenized_card_request, opts)
       return data, status_code, headers
     end
 
     # Create a Tokenized Card
     # |  |  |  | | --- | --- | --- | |**Tokenized cards**&lt;br&gt;A Tokenized card represents a network token. Network tokens perform better than regular card numbers and they are not necessarily invalidated when a cardholder loses their card, or it expires. 
-    # @param tokenizedcard_request 
+    # @param post_tokenized_card_request 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :profile_id The Id of a profile containing user specific TMS configuration.
-    # @return [Array<(TokenizedcardRequest, Fixnum, Hash)>] TokenizedcardRequest data, response status code and response headers
-    def post_tokenized_card_with_http_info(tokenizedcard_request, opts = {})
+    # @return [Array<(InlineResponse2001, Fixnum, Hash)>] InlineResponse2001 data, response status code and response headers
+    def post_tokenized_card_with_http_info(post_tokenized_card_request, opts = {})
 
       if @api_client.config.debugging
           begin
@@ -312,9 +312,9 @@ module CyberSource
                 puts 'Cannot write to log'
             end
       end
-      # verify the required parameter 'tokenizedcard_request' is set
-      if @api_client.config.client_side_validation && tokenizedcard_request.nil?
-        fail ArgumentError, "Missing the required parameter 'tokenizedcard_request' when calling TokenizedCardApi.post_tokenized_card"
+      # verify the required parameter 'post_tokenized_card_request' is set
+      if @api_client.config.client_side_validation && post_tokenized_card_request.nil?
+        fail ArgumentError, "Missing the required parameter 'post_tokenized_card_request' when calling TokenizedCardApi.post_tokenized_card"
       end
       # resource path
       local_var_path = 'tms/v2/tokenized-cards'
@@ -334,9 +334,9 @@ module CyberSource
       form_params = {}
 
       # http body (model)
-      post_body = @api_client.object_to_http_body(tokenizedcard_request)
+      post_body = @api_client.object_to_http_body(post_tokenized_card_request)
       sdk_tracker = SdkTracker.new
-      post_body = sdk_tracker.insert_developer_id_tracker(post_body, 'TokenizedcardRequest', @api_client.config.host, @api_client.merchantconfig.defaultDeveloperId)
+      post_body = sdk_tracker.insert_developer_id_tracker(post_body, 'PostTokenizedCardRequest', @api_client.config.host, @api_client.merchantconfig.defaultDeveloperId)
       inbound_mle_status = "optional"
       if MLEUtility.check_is_mle_for_API(@api_client.merchantconfig, inbound_mle_status, ["post_tokenized_card","post_tokenized_card_with_http_info"])
         begin
@@ -355,7 +355,7 @@ module CyberSource
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'TokenizedcardRequest',
+        :return_type => 'InlineResponse2001',
         :isResponseMLEForApi => is_response_mle_for_api)
       if @api_client.config.debugging
         begin

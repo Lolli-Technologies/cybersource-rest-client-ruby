@@ -12,47 +12,32 @@ Swagger Codegen version: 2.4.38
 require 'date'
 
 module CyberSource
-  # Represents the Card Art Asset associated to the Network Token. 
   class InlineResponse2001
-    # Unique identifier for the Card Art Asset. 
-    attr_accessor :id
+    attr_accessor :_links
 
-    # The type of Card Art Asset. 
-    attr_accessor :type
-
-    # The provider of the Card Art Asset. 
-    attr_accessor :provider
-
-    # Array of content objects representing the Card Art Asset. 
-    attr_accessor :content
+    attr_accessor :tokenized_card
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'type' => :'type',
-        :'provider' => :'provider',
-        :'content' => :'content'
+        :'_links' => :'_links',
+        :'tokenized_card' => :'tokenizedCard'
       }
     end
 
     # Attribute mapping from JSON key to ruby-style variable name.
     def self.json_map
       {
-        :'id' => :'id',
-        :'type' => :'type',
-        :'provider' => :'provider',
-        :'content' => :'content'
+        :'_links' => :'_links',
+        :'tokenized_card' => :'tokenized_card'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'id' => :'String',
-        :'type' => :'String',
-        :'provider' => :'String',
-        :'content' => :'Array<InlineResponse2001Content>'
+        :'_links' => :'InlineResponse2001Links',
+        :'tokenized_card' => :'Tmsv2TokenizedCard'
       }
     end
 
@@ -64,22 +49,12 @@ module CyberSource
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.has_key?(:'_links')
+        self._links = attributes[:'_links']
       end
 
-      if attributes.has_key?(:'type')
-        self.type = attributes[:'type']
-      end
-
-      if attributes.has_key?(:'provider')
-        self.provider = attributes[:'provider']
-      end
-
-      if attributes.has_key?(:'content')
-        if (value = attributes[:'content']).is_a?(Array)
-          self.content = value
-        end
+      if attributes.has_key?(:'tokenizedCard')
+        self.tokenized_card = attributes[:'tokenizedCard']
       end
     end
 
@@ -101,10 +76,8 @@ module CyberSource
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          type == o.type &&
-          provider == o.provider &&
-          content == o.content
+          _links == o._links &&
+          tokenized_card == o.tokenized_card
     end
 
     # @see the `==` method
@@ -116,7 +89,7 @@ module CyberSource
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, type, provider, content].hash
+      [_links, tokenized_card].hash
     end
 
     # Builds the object from hash

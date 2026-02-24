@@ -19,6 +19,9 @@ module CyberSource
     # List of supported Business Application Indicators. 
     attr_accessor :business_application_id
 
+    # Default Business Application Indicator. Must match one of the values in businessApplicationId array.   Possible values: - AA - BB - BI - BP - CB - CD - CI - CO - CP - FD - FT - GD - GP - LA - LO - MD - MI - MP - OG - PD - PG - PP - PS - RP - TU - WT
+    attr_accessor :default_business_application_id
+
     attr_accessor :aggregator
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -26,6 +29,7 @@ module CyberSource
       {
         :'payment_types' => :'paymentTypes',
         :'business_application_id' => :'businessApplicationId',
+        :'default_business_application_id' => :'defaultBusinessApplicationId',
         :'aggregator' => :'aggregator'
       }
     end
@@ -35,6 +39,7 @@ module CyberSource
       {
         :'payment_types' => :'payment_types',
         :'business_application_id' => :'business_application_id',
+        :'default_business_application_id' => :'default_business_application_id',
         :'aggregator' => :'aggregator'
       }
     end
@@ -44,6 +49,7 @@ module CyberSource
       {
         :'payment_types' => :'Array<String>',
         :'business_application_id' => :'Array<String>',
+        :'default_business_application_id' => :'String',
         :'aggregator' => :'PaymentsProductsPayoutsConfigurationInformationConfigurationsCommonAggregator'
       }
     end
@@ -68,6 +74,10 @@ module CyberSource
         end
       end
 
+      if attributes.has_key?(:'defaultBusinessApplicationId')
+        self.default_business_application_id = attributes[:'defaultBusinessApplicationId']
+      end
+
       if attributes.has_key?(:'aggregator')
         self.aggregator = attributes[:'aggregator']
       end
@@ -86,6 +96,12 @@ module CyberSource
       true
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] default_business_application_id Value to be assigned
+    def default_business_application_id=(default_business_application_id)
+      @default_business_application_id = default_business_application_id
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -93,6 +109,7 @@ module CyberSource
       self.class == o.class &&
           payment_types == o.payment_types &&
           business_application_id == o.business_application_id &&
+          default_business_application_id == o.default_business_application_id &&
           aggregator == o.aggregator
     end
 
@@ -105,7 +122,7 @@ module CyberSource
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [payment_types, business_application_id, aggregator].hash
+      [payment_types, business_application_id, default_business_application_id, aggregator].hash
     end
 
     # Builds the object from hash
