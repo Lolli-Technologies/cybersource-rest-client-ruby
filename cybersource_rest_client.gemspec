@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'activesupport', '>= 6.0.3.2'
   s.add_runtime_dependency 'interface','~> 1.0', '>= 1.0.5'
   s.add_runtime_dependency 'jwt', '~> 2.7'
-  s.add_runtime_dependency 'addressable', '~> 2.8'
+  s.add_runtime_dependency 'addressable', '>= 2.8.8'
   s.add_runtime_dependency 'time', '~> 0.2'
   s.add_runtime_dependency 'jose', '~> 1.1'
 
